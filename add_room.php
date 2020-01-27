@@ -1,0 +1,26 @@
+
+<?php
+	include 'dbconnect.php';
+
+	$name = $_POST['name'];
+	$image = $_FILES['image'];
+	$source_dir = "image/item/";
+	$file_path = $source_dir.$image['name'];
+	move_uploaded_file($image['tmp_name'], $file_path);
+
+	$sql = "INSERT INTO rooms (name,photo) VALUES (:name,:photo)";
+
+	$stmt = $pdo->prepare($sql);
+	$stmt->bindParam(':name',$name);
+	$stmt->bindParam(':photo',$file_path);
+	$stmt->execute();
+
+	if($stmt->rowCount()){
+		header("location:roomlist.php");
+	}
+	else{
+		echo "Error ! ";
+	}
+
+
+?>
