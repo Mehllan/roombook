@@ -22,7 +22,7 @@
 		}
 		else{
 			$_SESSION['login_reject']="Email and Password is not invalid";
-			header('location:login.php');
+			header('location:index.php');
 		}
 	}else{
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@
 		if($row['status']=="Admin"){
 			header('location:roomlist.php');
 		}else{
-			header('location:index.php');
+			header('location:home.php');
 		}
 	}
  ?>

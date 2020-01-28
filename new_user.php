@@ -41,6 +41,27 @@
 					<input type="password" placeholder="Enter Password" class="form-control" name="password">
 				</div>
 			</div>
+			<div class="row my-3">
+				<div class="col-lg-2">
+					<label> Department : </label>
+				</div>
+				<div class="col-lg-10">
+					<?php 
+						$sql ="SELECT * FROM department";
+						$stmt = $pdo->prepare($sql);
+						$stmt->execute();
+						$departments = $stmt->fetchAll();
+						foreach ($departments as $department) {
+							$name=$department['name'];	
+							$id = $department['id'];				
+				 	?>
+					<select class="form-control" name="dept_id">
+						<option>Choose Department</option>
+						<option><?php echo $name?></option>
+					<?php } ?>
+					</select>
+				</div>
+			</div>
 			<button type="submit" class="btn btn-primary mr-3 ml-4 " style="float: right;"> <i class="fas fa-save"></i> Save Changes </button>
 		</div>
 	</form>
