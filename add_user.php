@@ -10,6 +10,7 @@
 	$file_path = $source_dir.$image['name'];
 	move_uploaded_file($image['tmp_name'], $file_path);
 	$sql = "INSERT INTO users (name,username,password,photo,status,dept_id) VALUES (:name,:username,:password,:photo,:status,:dept_id)";
+	// $sql = "INSERT INTO users (name,username,password,photo,status,dept_id)"
 	$stmt = $pdo->prepare($sql);
 	$stmt->bindParam(':name',$name);
 	$stmt->bindParam(':username',$username);

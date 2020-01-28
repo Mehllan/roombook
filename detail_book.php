@@ -27,7 +27,19 @@
 					<tr>
 						<td><img src="<?php echo $room['photo'] ?>" width="100px" height="100px"></td>
 						<td>Location : <?php echo $room['location'] ?><br>Capacity : <?php echo $room['capacity'] ?></td>
-						<td><a href=""></a></td>
+						
+						<td>
+							<?php 
+								$sql = "SELECT * FROM booking";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+								$bookings = $stmt->fetchAll();
+								foreach ($bookings as $booking) {
+							?>
+								<?php echo $booking['mdate'] ?> | <?php echo $booking['starttime'] ?> ~ <?php echo $booking['endtime'] ?> | <?php echo $booking['subject'] ?> | <?php echo $booking['username'] ?><br>
+							<?php } ?>
+						</td>
+					
 						<td><a href="booking.php?id=<?php echo $room['id'] ?>" class="btn btn-outline-info">Book</a></td>
 					</tr>
 				</tbody>
