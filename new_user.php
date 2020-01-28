@@ -46,6 +46,8 @@
 					<label> Department : </label>
 				</div>
 				<div class="col-lg-10">
+					
+					<select class="form-control" name="dept_id">
 					<?php 
 						$sql ="SELECT * FROM department";
 						$stmt = $pdo->prepare($sql);
@@ -55,8 +57,6 @@
 							$name=$department['name'];	
 							$id = $department['id'];				
 				 	?>
-					<select class="form-control" name="dept_id">
-						<option>Choose Department</option>
 						<option><?php echo $name?></option>
 					<?php } ?>
 					</select>
